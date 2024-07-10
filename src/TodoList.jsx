@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
+const savedPriority = ["Low", "Medium", "High"]
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [task, setTask] = useState('');
     const [taskPriority, setTaskPriority] = useState('Low')
     const [checkStatus, setCheckStatus] = useState('All')
+
+    // const filterTodosPriority = () =>{
+    //     if(todos.length>1){
+    //         let tempTodos = [...todos];
+    //         tempTodos.sort((x, y) => savedPriority.indexOf(y.priority) - savedPriority.indexOf(x.priority));
+    //         return tempTodos;
+    //     }
+    // }
 
     const setPriority = (task) => {
         if (task?.includes('p1')) return 'High';
@@ -30,15 +39,15 @@ const TodoList = () => {
         return todos.status === checkStatus;
     });
 
-    console.log(filterTodos, '89');
-
 
     const addTodo = (e) => {
         e.preventDefault();
         if (task) {
-            const newPriority = setPriority(task)
+            const newPriority = setPriority(task);
             const cleanedTask = cleanTask(task);
-            setTodos([...todos, { task:cleanedTask, status:"In-Progress", priority: newPriority, IsEditing: false }]);
+            const newTodo = [...todos, { task: cleanedTask, status: "In-Progress", priority: newPriority, IsEditing: false }];
+            newTodo.sort((x, y) => savedPriority.indexOf(y.priority) - savedPriority.indexOf(x.priority));
+            setTodos(newTodo);
             setTask('');
         }
     };
@@ -62,7 +71,6 @@ const TodoList = () => {
     }
 
     const handleStatus = (index,newValue) => {
-        console.log(index, newValue, 'ty');
         let newTodos = [...todos];
         newTodos[index].status = newValue;
         setTodos(newTodos);
@@ -74,8 +82,6 @@ const TodoList = () => {
         setTodos(newTodos);
     };
 
-
-    console.log(todos, 'todo');
     return (
         <div className='main'>
             <div className='main-two'>
