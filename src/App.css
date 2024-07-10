@@ -6,7 +6,7 @@
 
 
 .main{
-  background-color: rgb(92, 42, 42);
+  background-color: rgb(0 0 0);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -16,6 +16,7 @@
 .main-two{
   background-color: #fff;
   width: 900px;
+  height: 80vh;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

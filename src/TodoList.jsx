@@ -7,14 +7,6 @@ const TodoList = () => {
     const [taskPriority, setTaskPriority] = useState('Low')
     const [checkStatus, setCheckStatus] = useState('All')
 
-    // const filterTodosPriority = () =>{
-    //     if(todos.length>1){
-    //         let tempTodos = [...todos];
-    //         tempTodos.sort((x, y) => savedPriority.indexOf(y.priority) - savedPriority.indexOf(x.priority));
-    //         return tempTodos;
-    //     }
-    // }
-
     const setPriority = (task) => {
         if (task?.includes('p1')) return 'High';
         if (task?.includes('p2')) return 'Medium';
@@ -47,6 +39,7 @@ const TodoList = () => {
             const cleanedTask = cleanTask(task);
             const newTodo = [...todos, { task: cleanedTask, status: "In-Progress", priority: newPriority, IsEditing: false }];
             newTodo.sort((x, y) => savedPriority.indexOf(y.priority) - savedPriority.indexOf(x.priority));
+            setTaskPriority("Low")
             setTodos(newTodo);
             setTask('');
         }
