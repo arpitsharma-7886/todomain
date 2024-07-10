@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 const savedPriority = ["Low", "Medium", "High"]
 
 const TodoList = () => {
@@ -41,12 +42,14 @@ const TodoList = () => {
             newTodo.sort((x, y) => savedPriority.indexOf(y.priority) - savedPriority.indexOf(x.priority));
             setTaskPriority("Low")
             setTodos(newTodo);
+            toast.success("Task added")
             setTask('');
         }
     };
 
     const handleDelete = (index) => {
         const newTodos = [...todos.slice(0, index), ...todos.slice(index + 1)]
+        toast.success("Task deleted")
         setTodos(newTodos)
     }
 
@@ -56,6 +59,7 @@ const TodoList = () => {
             let newTodo = document.getElementById('todo-content-' + index).innerText;
             newTodos[index].task = newTodo;
             newTodos[index].IsEditing = !newTodos[index].IsEditing;
+            toast.info("Task edited successfully")
             setTodos(newTodos);
         } else {
             newTodos[index].IsEditing = !newTodos[index].IsEditing;
@@ -87,12 +91,12 @@ const TodoList = () => {
                         placeholder='Enter a task here'
                         className='form-input form-child'
                     />
-                    <select value={taskPriority} onChange={(e)=>setTaskPriority(e.target.value)} className='priority'>
+                    <select value={taskPriority} onChange={(e)=>setTaskPriority(e.target.value)} className='form-child priority'>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
-                    <button type="submit" className='form-child'>ADD+</button>
+                    <button type="submit" className='form-child add-btn'>ADD+</button>
                 </form>
 
                 <select className='selectFilter' value={checkStatus} onChange={handleStatusFilter} >
@@ -118,7 +122,7 @@ const TodoList = () => {
                             {filterTodos.map((todo, index) => (
                                 <tr key={index}>
                                     <td>
-                                    <input type='checkbox' checked={todo.status === 'Completed'} onChange={() => handleComplete(index)}/>
+                                    <input className='checkbox' type='checkbox' checked={todo.status === 'Completed'} onChange={() => handleComplete(index)}/>
                                     </td>
                                     <td>{index + 1}</td>
                                     <td suppressContentEditableWarning={true} id={'todo-content-' + index} contentEditable={todo.IsEditing}>{todo.task}</td>

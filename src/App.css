@@ -4,8 +4,12 @@
   box-sizing: border-box;
 } 
 
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+}
 
-.main{
+.main {
   background-color: rgb(0 0 0);
   height: 100vh;
   display: flex;
@@ -13,55 +17,76 @@
   align-items: center;
 }
 
-.main-two{
+.main-two {
   background-color: #fff;
   width: 900px;
-  height: 80vh;
+  height: auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
-.main-two h1{
+.main-two:hover {
+  transform: scale(1.02);
+}
+
+.main-two h1 {
   text-align: center;
   margin-bottom: 20px;
+  color: #333;
 }
 
-.form{
+.form {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.form input{
-  width: 300px;
+.form-child {
+  font-size: 16px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-right: 10px;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 
+/* .form-child:focus {
+  border-color: #4CAF50;
+} */
+
 .form button {
-  margin-left: 10px;
-  width: 100px;
-  padding: 10px;
   background-color: #4CAF50;
   color: #fff;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
 .form button:hover{
-  background-color: #559657;
+  background-color: #09cc0f;
 }
 
-.form-child{
+/* .form-child button:hover {
+  background-color: #45a049;
+} */
+
+.priority {
+  width: 100px;
+}
+
+.selectFilter {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 150px;
   font-size: 16px;
 }
 
-.table{
+.table {
   width: 100%;
-  margin: auto;
   overflow-x: auto;
 }
 
@@ -69,16 +94,18 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #fff;
 }
 
 table th, table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
   text-align: center;
 }
 
 table th {
-  background-color: #f2f2f2;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 table tr:nth-child(even) {
@@ -86,7 +113,7 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-  background-color: #ddd;
+  background-color: #f1f1f1;
 }
 
 table button {
@@ -96,24 +123,25 @@ table button {
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.edit-button{
-  background-color: #264ed4;
-  margin-right: 5px;
-}
-
-.edit-button:hover{
-  background-color: #1a2442;
+  transition: background-color 0.2s;
 }
 
 table button:hover {
   background-color: #ff3333;
 }
 
-.priority{
-  margin-left: 10px;
-  font-size: 16px;
-  width: 100px;
+.edit-button {
+  background-color: #264ed4;
+  margin-right: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.2s;
 }
 
+.edit-button:hover {
+  background-color: #1a2442;
+}
+
+.checkbox {
+  cursor: pointer;
+  transform: scale(1.2);
+}
